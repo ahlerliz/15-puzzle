@@ -54,15 +54,16 @@ import "./Board.css";
 
   /** Check if the player has won */
   function hasWon() {
-    let num = 1
+    let num = 1;
     for (let y = 0; y < nrows; y++) {
       for (let x = 0; x < ncols; x++) {
-        if (board[y][x] !== num){
+        if (board[y][x] !== num ){
           return false;
         }
+        if (num === 15) return true;
+        num += 1;
       }
     }
-    return true;
   }
 
   /** Returns the [y, x] coord of the empty space on board */
@@ -70,7 +71,7 @@ import "./Board.css";
     for (let y = 0; y < nrows; y++) {
       for (let x = 0; x < ncols; x++) {
         if (board[y][x] === null){
-          return [y, x];
+          return {emptyY: y, emptyX: x};
         }
       }
     }
@@ -80,19 +81,16 @@ import "./Board.css";
   function moveTiles({coord}) {
     setBoard(oldBoard => {
       const [y, x] = coord.split("-").map(Number);
-
-      const emptyCoords = findEmpty()
-      const emptyY = emptyCoords[0];
-      const emptyX = emptyCoords[1];
+      const {emptyY, emptyX} = findEmpty()
 
       if ((emptyY !== y && emptyX !== x) || (emptyY === y && emptyX === x)){
         // if user tries to move empty space or tile that isn't in same col/row, do nothing
         return oldBoard;
       }
-
       const boardCopy = oldBoard.map(row => [...row]);
 
       if (emptyY === y){
+        // moving tiles in column
         let direction = x-emptyX > 0 ? 1 : -1;
         let oppDirection = x-emptyX > 0 ? -1 : 1;
         for (let i = Math.abs(x-emptyX); i > 0; i--){
@@ -102,6 +100,7 @@ import "./Board.css";
       }
 
       if (emptyX === x){
+        //moving tiles in row
         let direction = y-emptyY > 0 ? 1 : -1;
         let oppDirection = y-emptyY > 0 ? -1 : 1;
         for (let i = Math.abs(y-emptyY); i > 0; i--){

@@ -2,15 +2,15 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Board from "./Board";
 
-let size = {nrows: 0, ncols: 0}
+
 describe("<Board /> rendering", function () {
   describe("inital board and win state", function () {
     it("renders without crashing", function () {
       render(<Board />);
     });
 
-    it("doesn't match snapshot for full board as nums are random", function () {
-      const { asFragment } = render(<Board size />);
+    it("matches snapshot for full board", function () {
+      const { asFragment } = render(<Board nrows={0} ncols={0} />);
       expect(asFragment()).toMatchSnapshot();
     });
   });
