@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Board /> rendering inital board and win state doesn't match snapshot for full board as nums are random 1`] = `
+<DocumentFragment>
+  <table
+    class="Board"
+  >
+    <tbody>
+      <tr>
+        <td
+          class="Tile "
+          role="button"
+        >
+          15
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          14
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          2
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          10
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`<Board /> rendering inital board and win state matches snapshot for full board 1`] = `
+<DocumentFragment>
+  <table
+    class="Board"
+  >
+    <tbody>
+      <tr>
+        <td
+          class="Tile "
+          role="button"
+        >
+          15
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          2
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          14
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          5
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="Tile "
+          role="button"
+        >
+          3
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          8
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          7
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          9
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="Tile "
+          role="button"
+        >
+          12
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          4
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          13
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          10
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="Tile "
+          role="button"
+        >
+          11
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          1
+        </td>
+        <td
+          class="Tile "
+          role="button"
+        >
+          6
+        </td>
+        <td
+          class="Tile Tile-empty"
+          role="button"
+        />
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
