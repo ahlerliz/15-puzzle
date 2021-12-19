@@ -6,6 +6,8 @@ To play 15 puzzle, find a folder you would like to clone to and run the followin
 
 "cd 15-puzzle"
 
+"npm install"
+
 "npm start"
 
 
