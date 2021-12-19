@@ -13,4 +13,6 @@ To play 15 puzzle, find a folder you would like to clone to and run the followin
 
 to run tests, run:
 
-"npm test"
+"npm test a"
+
+*note: snapshot test will initially fail as the nums are random, press "u" to update the snapshot
