@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import Tile from "./Tile";
 
 describe("<Tile /> rendering", function () {
-  let container;
+  let container: any;
 
   beforeEach(function () {
     // add a TR to the document created by the test
@@ -14,7 +14,7 @@ describe("<Tile /> rendering", function () {
   });
 
   it("renders without crashing", function () {
-    render(<Tile />, { container });
+    render(<Tile value/>, { container });
   });
 
   it("matches snapshot when numbered", function () {
@@ -23,7 +23,7 @@ describe("<Tile /> rendering", function () {
   });
 
   it("matches snapshot when empty", function () {
-    const { asFragment } = render(<Tile />, { container });
+    const { asFragment } = render(<Tile value/>, { container });
     expect(asFragment()).toMatchSnapshot();
   });
 });

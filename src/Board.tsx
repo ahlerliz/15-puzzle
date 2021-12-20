@@ -30,8 +30,8 @@ import "./Board.css";
   const [board, setBoard] = useState(createBoard);
 
   /** Create an array of unique random integers 1-15, and add null to array */
-  function createRandomNums(){
-    let nums = new Set();
+  function createRandomNums(): (number|null)[]{
+    let nums:any = new Set();
     nums.add(null);
     while (nums.size < 16){
       let num = Math.floor(Math.random() * 100) + 1;
@@ -43,7 +43,7 @@ import "./Board.css";
   }
 
   /** Create a board nrows high/ncols wide, each tile given a num 1-15 or null */
-  function createBoard() {
+  function createBoard(): (number|null|undefined)[][] {
     let nums = createRandomNums()
     return Array.from({length: nrows}).map(
         row => Array.from({length: ncols}).map(
@@ -53,8 +53,8 @@ import "./Board.css";
   }
 
   /** Check if the player has won */
-  function hasWon() {
-    let num = 1;
+  function hasWon():boolean {
+    let num: number = 1;
     for (let y = 0; y < nrows; y++) {
       for (let x = 0; x < ncols; x++) {
         if (board[y][x] !== num ){
@@ -64,10 +64,11 @@ import "./Board.css";
         num += 1;
       }
     }
+    return true;
   }
 
   /** Returns the [y, x] coord of the empty space on board */
-  function findEmpty(){
+  function findEmpty(): {emptyY:number, emptyX:number}{
     for (let y = 0; y < nrows; y++) {
       for (let x = 0; x < ncols; x++) {
         if (board[y][x] === null){
@@ -75,10 +76,11 @@ import "./Board.css";
         }
       }
     }
+    return {emptyY: 0, emptyX: 0};
   }
 
   /** Move tiles based on clicked tile; returns new board configuration */
-  function moveTiles({coord}) {
+  function moveTiles({coord}:{coord:string}){
     setBoard(oldBoard => {
       const [y, x] = coord.split("-").map(Number);
       const {emptyY, emptyX} = findEmpty()
@@ -112,6 +114,7 @@ import "./Board.css";
       return boardCopy;
     });
   }
+  
 
   // if the game is won, just show a winning msg & render nothing else
   if (hasWon()) {
@@ -125,12 +128,12 @@ import "./Board.css";
   for (let y = 0; y < nrows; y++) {
     let row = [];
     for (let x = 0; x < ncols; x++) {
-      let coord = `${y}-${x}`;
+      let coord: string = `${y}-${x}`;
       row.push(
           <Tile
               key={coord}
               value={board[y][x]}
-              moveTilesHere={evt => moveTiles({coord, value: board[y][x]})}
+              moveTilesHere={() => moveTiles({coord})}
           />,
       );
     }

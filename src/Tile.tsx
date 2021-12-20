@@ -13,8 +13,12 @@ import "./Tile.css";
  * This handles clicks --- by calling moveTilesHere
  *
  **/
+interface Props {
+  moveTilesHere: () => void,
+  value: number | null | undefined;
+}
 
-function Tile({ moveTilesHere, value }) {
+function Tile({ moveTilesHere, value }: Props) {
   const classes = `Tile ${value ? "" : "Tile-empty"}`;
   return <td className={classes} onClick={moveTilesHere} role="button" >{value}</td>;
 }
